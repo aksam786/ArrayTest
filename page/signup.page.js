@@ -86,16 +86,17 @@ class SignUp {
     async secuityVerification() {
         try {
             await this.page.waitForTimeout(10000)
-            for (let j = 0; j < 5; i++) { 
+            for (let j = 0; j < 10; i++) { 
 
                 // validate if user has completed the sign up and is on Sign Up Completion Page
+                await this.page.waitForTimeout(3000)
                 const SignUpCompletionVisible = await this.page.locator(locators.SignUpCompletion).isVisible();
                 console.log("SignUpCompletionVisible", SignUpCompletionVisible)
                 if (SignUpCompletionVisible == true) {
                     await this.page.click(locators.NextButton)
                     await this.page.waitForTimeout(20000)
-                    console.log("Validation", await this.page.locator(locators.SignUpValidation).isVisible())
-                    await expect(await this.page.locator(locators.SignUpValidation)).toBeVisible();
+                    console.log("DashboardPageValidation", await this.page.locator(locators.DashboardValidation).isVisible())
+                    await expect(await this.page.locator(locators.DashboardValidation)).toBeVisible();
                     await this.page.waitForTimeout(5000)
                     break;
                 }
@@ -103,29 +104,29 @@ class SignUp {
 
                     // Get the questions appearing on a page and store them in an array
                     const noOFQuestions = await this.page.locator(locators.SecuirtyQuestions).count();
-                    var pageTwoQuestionsArray = [];
+                    var QuestionsArray = [];
                     for (var i = 1; i < noOFQuestions;) {
                         const questionName = await this.page.innerText(`span >> nth = ${i}`)
                         console.log(questionName)
-                        pageTwoQuestionsArray.push(questionName)
+                        QuestionsArray.push(questionName)
                         i = i + 2;
                     }
 
-                    const sizeOfQuestionsArray = pageTwoQuestionsArray.length;
+                    const sizeOfQuestionsArray = QuestionsArray.length;
                     for (let i = 0; i < sizeOfQuestionsArray; i++) {
-                        if (pageTwoQuestionsArray[i] == testData.PreviousEmployeerQues) {
+                        if (QuestionsArray[i] == testData.PreviousEmployeerQues) {
                             await this.page.locator(locators.Employeer).click()
                         }
-                        else if (pageTwoQuestionsArray[i] == testData.SSNStateSecurityQues) {
+                        else if (QuestionsArray[i] == testData.SSNStateSecurityQues) {
                             await this.page.locator(locators.StateOfSSN).click()
                         }
                         else {
                             await this.page.locator(locators.NoneOption).nth(i).click();
                         }
                     }
-                    await this.page.waitForTimeout(10000)
+                    await this.page.waitForTimeout(4000)
                     await this.page.click(locators.NextButton)
-                    await this.page.waitForTimeout(7000)
+                    await this.page.waitForTimeout(5000)
                     continue;
                 }
             }

@@ -21,7 +21,7 @@
     "StreetAssociatedQues": "span:has-text('Which of these street names are you associated with?')",
     "AutoLoanQues": "span:has-text('What year was your most recent auto loan or lease established?')",
     "SignUpCompletion": ".description:has-text('Quick report of your credit account')",
-    "SignUpValidation": ".title:has-text('Thomas D Devos')",
+    "DashboardValidation": ".title:has-text('Thomas D Devos')",
     "CreditScore": ".score-type:has-text('Your Credit Rating')",
     "SettingsButton": ".menuLink:has-text('Settings')",
     "LogoutButton": ".submenu:has-text('Log out')",
