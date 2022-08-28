@@ -1,0 +1,14 @@
+{
+    "firstName": "Thomas",
+    "lastName" : "Devos",
+    "Ssn" : "3511",
+    "Year" : "1957",
+    "Month": "Sep (09)",
+    "Day": "06",
+    "state": "Alabama",
+    "street" : "110 Beer Creek",
+    "city" : "Tuscaloosa",
+    "zip" : "35405",
+    "PreviousEmployeerQues": "Which of the following is a current or previous employer?",
+    "SSNStateSecurityQues": "What state was your social security number issued (this could be the state in which you were born or had your first job)?"
+}
