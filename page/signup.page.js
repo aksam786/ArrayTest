@@ -89,15 +89,15 @@ class SignUp {
             for (let j = 0; j < 10; i++) { 
 
                 // validate if user has completed the sign up and is on Sign Up Completion Page
-                await this.page.waitForTimeout(3000)
+                await this.page.waitForTimeout(5000)
                 const SignUpCompletionVisible = await this.page.locator(locators.SignUpCompletion).isVisible();
                 console.log("SignUpCompletionVisible", SignUpCompletionVisible)
                 if (SignUpCompletionVisible == true) {
+                    await this.page.waitForTimeout(5000)
                     await this.page.click(locators.NextButton)
                     await this.page.waitForTimeout(20000)
                     console.log("DashboardPageValidation", await this.page.locator(locators.DashboardValidation).isVisible())
                     await expect(await this.page.locator(locators.DashboardValidation)).toBeVisible();
-                    await this.page.waitForTimeout(5000)
                     break;
                 }
                 else {
